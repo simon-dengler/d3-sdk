@@ -51,9 +51,9 @@
 							<h2>Teleskopstange</h2>
 						</div>
 						<div class="split split-right">
-							<input type="button" class="GP-button" value="Auf" onclick="DRDoubleSDK.sendCommand('base.pole.stand')">
-							<input type="button" class="GP-button" value="Ab" onclick="DRDoubleSDK.sendCommand('base.pole.sit')">
-							<input type="button" class="GP-button last-button " value="Stop" onclick="DRDoubleSDK.sendCommand('base.pole.stop')"> 
+							<input type="button" class="GP-button touchable" value="Auf" onclick="DRDoubleSDK.sendCommand('base.pole.stand')">
+							<input type="button" class="GP-button touchable" value="Ab" onclick="DRDoubleSDK.sendCommand('base.pole.sit')">
+							<input type="button" class="GP-button last-button touchable" value="Stop" onclick="DRDoubleSDK.sendCommand('base.pole.stop')"> 
 						</div>
 					</td>
 				</tr>
@@ -63,8 +63,8 @@
 							<h2>Standfuß</h2>
 						</div>
 						<div class="split split-right">
-							<input type="button"  class="GP-button2" value="Einfahren" onclick="DRDoubleSDK.sendCommand('base.kickstand.retract')">
-							<input type="button" class="GP-button2 last-button" value="Ausfahren" onclick="DRDoubleSDK.sendCommand('base.kickstand.deploy')">
+							<input type="button"  class="GP-button2 touchable" value="Einfahren" onclick="DRDoubleSDK.sendCommand('base.kickstand.retract')">
+							<input type="button" class="GP-button2 last-button touchable" value="Ausfahren" onclick="DRDoubleSDK.sendCommand('base.kickstand.deploy')">
 							<!--<input type="button" class="GP-button2 last-button" value="Alert" onclick="alert('Hallo')">-->
 						</div>
 					</td>
@@ -82,16 +82,18 @@
 						<div class="split left" id="cam">
 								<h2>Kamera</h2>
 						</div>
-						<div class="GP-button3" id="cam_value" onclick="testGui()">
-							<img id="cam_on" src="../img/cam_on.png" alt="camera">
-							<img id="cam_off" src="../img/cam_off.png" alt="camera">
-						</div>
-						<div class="GP-button3" id="mic_value" onclick="testGui()">
-							<img id="mic_on" src="../img/mic_on.png" alt="microphone">
-							<img id="mic_off" src="../img/mic_off.png" alt="microphone">
-						</div>
-						<div class="split right2" id="mic">
-							<h2>Mikrofon</h2>
+						<div class="split split-right">
+							<div class="GP-button3" id="cam_value" onclick="testGui()">
+								<img id="cam_on" src="../img/cam_on.png" alt="camera">
+								<img id="cam_off" src="../img/cam_off.png" alt="camera">
+							</div>
+							<div class="GP-button3" id="mic_value" onclick="testGui()">
+								<img id="mic_on" src="../img/mic_on.png" alt="microphone">
+								<img id="mic_off" src="../img/mic_off.png" alt="microphone">
+							</div>
+							<div class="split right2 last-button" id="mic">
+								<h2>Mikrofon</h2>
+							</div>
 						</div>
 					</td>
 				</tr>
