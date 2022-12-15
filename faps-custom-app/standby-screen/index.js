@@ -19,7 +19,7 @@ const jsonSpec = {
 	  "hidden": false
   }
 const endpointSettings = {
-		"allowDisablingObstacleAvoidance": false,
+		"allowDisablingObstacleAvoidance": true,
 		"disablePhoto": true,
 		"hideVisitorPassButton": true,
 		"defaultSpeakerVolume": 0.45,
