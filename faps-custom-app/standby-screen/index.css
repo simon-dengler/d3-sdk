@@ -27,8 +27,8 @@ img {
 
 html {
     position:relative;
-    height:1024px;
-    width: 768px;
+    min-height:1024px;
+    min-width: 768px;
 }
 
 #section-title{
