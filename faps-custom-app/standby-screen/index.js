@@ -86,9 +86,9 @@ DRDoubleSDK.on("event", (message) => {
 		}
 		// DRMics
 		case "DRMics.status": {
-			let micOff = message.data.boost == 0.0 ? true : false;
-			q("#mic_off").hidden = micOff;
-			q("#mic_on").hidden = !micOff;
+			let micOn = message.data.boost == 0.0 ? false : true;
+			q("#mic_off").hidden = micOn;
+			q("#mic_on").hidden = !micOn;
 			break;
 		}
 		// DRAPI
