@@ -1,0 +1,127 @@
+<!doctype html>
+<html>
+<head>
+	<meta charset="utf-8"   >
+	<title>Standby Bildschirm</title>
+	<link href="index.css" rel="stylesheet" />
+	<script src="index.js"></script>
+</head>
+
+<body style="background-color:#97c139">
+	<div class="main">
+	<div class="content">
+<!-----First table--------------------->
+		<div id="section-title">
+			<h2>Netzwerk</h2>
+		</div>
+		<div class="first-table">
+			<table class="data" >
+				<tr>
+					<td >
+							<div class="split left">
+							<h2>SSID</h2>
+							</div>
+							<div class="split right">
+								<h2 id="wifi_ssid"></h2>
+							</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="split left">
+							<h2>Verbindung</h2>
+						</div>
+						<div class="split right">
+							<h2 id="wifi_connected"></h2>
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+
+<!-----Second table--------------------->
+		<div id="section-title">
+			<h2>Basis</h2>
+		</div>
+		<div class="second-table">
+			<table class="data"  id="base">
+				<tr>
+					<td>
+						<div class="split left">
+							<h2>Teleskopstange</h2>
+						</div>
+						<div class="split split-right">
+							<input type="button" class="GP-button" value="Auf" onclick="DRDoubleSDK.sendCommand('base.pole.stand')">
+							<input type="button" class="GP-button" value="Ab" onclick="DRDoubleSDK.sendCommand('base.pole.sit')">
+							<input type="button" class="GP-button last-button " value="Stop" onclick="DRDoubleSDK.sendCommand('base.pole.stop')"> 
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="split left">
+							<h2>Standfuß</h2>
+						</div>
+						<div class="split split-right">
+							<input type="button"  class="GP-button2" value="Einfahren" onclick="DRDoubleSDK.sendCommand('base.kickstand.retract')">
+							<input type="button" class="GP-button2 last-button" value="Ausfahren" onclick="DRDoubleSDK.sendCommand('base.kickstand.deploy')">
+							<!--<input type="button" class="GP-button2 last-button" value="Alert" onclick="alert('Hallo')">-->
+						</div>
+					</td>
+				</tr>
+			</table>
+		</div>
+<!-----Third table--------------------->
+		<div id="section-title">
+			<h2>System</h2>
+		</div>
+		<div class="third-table">
+			<table class="data" >
+				<tr>
+					<td>
+						<div class="split left" id="cam">
+								<h2>Kamera</h2>
+						</div>
+						<div class="GP-button3" id="cam_value" onclick="testGui()">
+							<img id="cam_on" src="../img/cam_on.png" alt="camera">
+							<img id="cam_off" src="../img/cam_off.png" alt="camera">
+						</div>
+						<div class="GP-button3" id="mic_value" onclick="testGui()">
+							<img id="mic_on" src="../img/mic_on.png" alt="microphone">
+							<img id="mic_off" src="../img/mic_off.png" alt="microphone">
+						</div>
+						<div class="split right2" id="mic">
+							<h2>Mikrofon</h2>
+						</div>
+					</td>
+				</tr>
+				<tr>
+					<td>
+						<div class="split left">
+							<h2>Batterie</h2>
+						</div>						
+						<div class="split split-right">
+							<div class="GP-button2">
+								<img src="../img/bat100.png" id="bat_val_img">
+							</div>
+							<div class="right GP-button2 last-button">
+								<h2 id="bat_val_percent"></h2>
+							</div>
+						</div>
+					</td>
+				</tr>
+				<!-- <tr>
+					<td class="td2">
+						<div class="split left2" id="battery_value">
+							<h2>Batterie</h2>
+						</div>
+						<div class="split left1" id="charging">
+							<div id="chargingDiv"><h2>Ladestatus</h2></div>
+						</div>
+					</td>
+				</tr> -->
+			</table>
+		</div>
+	</div>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>Anzeige im Videocall</title>
+	<meta charset="utf-8">
+	<link href="index.css" rel="stylesheet" />
+	<script src="index.js"></script>
+</head>
+<body>
+    <div id="content">
+		<table>
+			<tr>
+				<th>
+					<div class="section-title">
+						<h1>Mikrofon</h1>
+					<div>
+				</th>
+				<th>
+					<div class="section-title kamera">
+						<h1>Kamera</h1>
+				    </div>
+				</th>
+				<th>
+					<div class="section-title Lautsprecher">
+					    <h1>Lautsprecher</h1>
+				    </div>
+				</th>
+			</tr>
+			<tr class="tr">
+				<td>
+					<h2 id="micValue"></h2>
+				</td>
+				<td>
+					<h2 id="camValue"></h2>
+				</td>
+				<td>
+					<h2 id="speakerValue"></h2>
+				</td>
+			</tr>
+			<tr class="tr">
+				<td>
+					<input type="button" id="allowMic" value="Erlauben" onclick="allowMic()">
+					<input type="button" id="refuseMic" value="Deaktivieren" onclick="refuseMic()">
+				</td>
+				<td>
+					<div class="popup" onclick="myFunction()">
+						<input type="button" id="refuseCam" value="Deaktivieren">
+						<span class="popuptext" id="myPopup">Sind Sie sich sicher? Die Verbindung wird getrennt!
+						    <input type="button" id="popupbutton"  value="Abbrechen">
+							 <input type="button" id="popupbutton" value="Ja, deaktivieren" onclick="confirm()">
+				</td>
+				<td>
+					<input type="button" id="allowSpeaker" value="Aktivieren" onclick="allowSpeaker()">
+					<input type="button" id="muteSpeaker" value="Stummschalten" onclick="muteSpeaker()">
+				</td>
+			</tr>
+		</table>
+	</div>
+</body>
+</html>
