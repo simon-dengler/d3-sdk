@@ -19,7 +19,7 @@ const jsonSpec = {
 	  "hidden": false
   }
 const endpointSettings = {
-		"allowDisablingObstacleAvoidance": true,
+		"allowDisablingObstacleAvoidance": false,
 		"disablePhoto": true,
 		"hideVisitorPassButton": true,
 		"defaultSpeakerVolume": 0.45,
@@ -38,19 +38,32 @@ DRDoubleSDK.on("event", (message) => {
 		// DRNetwork
 		case "DRNetwork.info": {
 			q("#wifi_ssid").innerText = (message.data.connection == "connected" && message.data.ssid) ? message.data.ssid : "Unknown";
-			q("#wifi_ip").innerText = (message.data.connection == "connected") ? 'verbunden' : 'Getrennt';
+			q("#wifi_connected").innerText = (message.data.connection == "connected") ? 'Verbunden' : 'Getrennt';
 			break;
 		}
 		// DRBase
 		case "DRBase.status": {
-			q("#battery_value").innerText = message.data.battery + ' %';
+			let bat_val = message.data.battery;
+			q("#bat_val_percent").innerText = bat_val + ' %';
+			let bat_val_nmbr = Number(bat_val);
+			let source = "../img/bat100.png";
 			if (message.data.charging) {
-				q("#chargingDiv").style.backgroundColor = "red";
-				q("#chargingDiv").innerHTML = "Ladevorgang aktiv";
+				source = "../img/bat_charging.png";
 			} else {
-				q("#chargingDiv").style.backgroundColor = "inherit";
-				q("#chargingDiv").innerHTML = "kein Ladevorgang";
+				if (bat_val_nmbr < 90) {
+					source = "../img/bat75.png";
+					if (bat_val_nmbr < 75) {
+						source = "../img/bat50.png";
+						if(bat_val_nmbr < 50){
+							source = "../img/bat25.png";
+							if(bat_val_nmbr < 25){
+								source = "../img/bat0.png";
+							}
+						}
+					}
+				}				
 			}
+			q("#bat_val_img").src = source;
 			break;
 		}
 		// DREndpoint
@@ -78,10 +91,32 @@ DRDoubleSDK.on("event", (message) => {
 		}
 		// DRAPI
 		case "DRAPI.status": {
-			q("#cam_value").innerHTML = message.data.camera ? 'AN' : 'AUS';
+			// q("#cam_value").innerHTML = message.data.camera ? 'AN' : 'AUS';
+			let cam_val = message.data.camera ? true : false;
+			q('#cam_on').hidden = !cam_val;
+			q('#cam_off').hidden = cam_val;
 		}
 	}
 });
+/*var cam_val = true;
+function testGui() {
+	cam_val = !cam_val;
+	q('#cam_on').hidden = !cam_val;
+	q('#cam_off').hidden = cam_val;
+	q('#mic_on').hidden = !cam_val;
+	q('#mic_off').hidden = cam_val;
+	if(cam_val){
+		q("#bat_val_img").src = "../img/bat25.png";
+		q("#wifi_connected").innerText = "Nope";
+		q("#bat_val_percent").innerText = "23%";
+		q("#wifi_ssid").innerText = "NoNet";
+	} else {
+		q("#bat_val_img").src = "../img/bat_charging.png";
+		q("#wifi_connected").innerText = "Yeesss";
+		q("#bat_val_percent").innerText = "69%";
+		q("#wifi_ssid").innerText = "SuperDuperNetz";
+	}
+}*/
 
 function onConnect() {
 	if (DRDoubleSDK.isConnected()) {
@@ -135,3 +170,6 @@ window.onload = () => {
 		DRDoubleSDK.sendCommand("endpoint.disable");
 	});
 };
+
+
+
