@@ -86,7 +86,9 @@ DRDoubleSDK.on("event", (message) => {
 		}
 		// DRMics
 		case "DRMics.status": {
-			q("#mic_value").innerText = message.data.boost == 0.0 ? 'AUS' : 'AN';
+			let micOff = message.data.boost == 0.0 ? true : false;
+			q("#mic_off").hidden = micOff;
+			q("#mic_on").hidden = !micOff;
 			break;
 		}
 		// DRAPI
