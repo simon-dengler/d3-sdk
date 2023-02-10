@@ -5,3 +5,6 @@ faps-custom-app/index.html
 faps-custom-app/move-to-apache-folder.sh
 bootscript.sh
 commands.txt
+output.log
+pipe.sh
+pipe2.sh
