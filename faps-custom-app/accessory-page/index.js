@@ -1,23 +1,12 @@
 function q(q) { return document.querySelector(q); }
 
-//var log = q("#log");
 let consent = false;
-
-// function sendMessage(message) {
-// 	DRDoubleSDK.sendCommand('endpoint.driverSidebar.sendMessage', {
-// 		message: message,
-// 		targetOrigin: '*'
-// 	});
-// }
-
-// function handleMesage(message) {
-// 	log.innerHTML += "<p>" + message.text + "</p>";
-// }
 function myFunction() {
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");}
     
 function initScreen() {
+    //q("#refuseMic").hidden = true;
     q("#confirm").hidden = true;
     q("#warning").hidden = true;
     refuseMic();
@@ -26,16 +15,19 @@ function initScreen() {
 
 function allowMic() {
     consent = true;
-    q("#allowMic").hidden = true;
-    q("#refuseMic").hidden = false;
+    document.getElementById('allowMic').style.display = 'none';
+    document.getElementById('refuseMic').style.display = 'inline';
     DRDoubleSDK.sendCommand("mics.setBoost", { percent: 0.25 });
     DRDoubleSDK.sendCommand("mics.requestStatus");
 }
 
 function refuseMic() {
     consent = false;
-    q("#refuseMic").hidden = true;
-    q("#allowMic").hidden = false;
+   document.getElementById('refuseMic').style.display = 'none';
+   document.getElementById('allowMic').style.display = 'inline';
+    
+   //q("#refuseMic").hidden = true;
+   //q("#allowMic").hidden = false;
     DRDoubleSDK.sendCommand("mics.setBoost", { percent: 0.0 });
     DRDoubleSDK.sendCommand("mics.requestStatus");
 }
@@ -59,15 +51,27 @@ function confirm() {
 }
 
 function muteSpeaker() {
+    consent = false;
+    document.getElementById('muteSpeaker').style.display = 'none';
+    document.getElementById('allowSpeaker').style.display = 'inline';
     DRDoubleSDK.sendCommand("speaker.disable");
-    q("#muteSpeaker").hidden = true;
-    q("#allowSpeaker").hidden = false;
+    // q("#muteSpeaker").hidden = true;
+    //q("#allowSpeaker").hidden = false;
+
 }
 
+
 function allowSpeaker() {
+
+    consent = true;
+    document.getElementById('allowSpeaker').style.display = 'none';
+    document.getElementById('muteSpeaker').style.display = 'inline';
+
     DRDoubleSDK.sendCommand("speaker.enable");
-    q("#allowSpeaker").hidden = true;
-    q("#muteSpeaker").hidden = false;
+   // q("#allowSpeaker").hidden = true;
+    //q("#muteSpeaker").hidden = false;
+    //DRDoubleSDK.sendCommand("mics.setBoost", { percent: 0.25 });
+    //DRDoubleSDK.sendCommand("mics.requestStatus");
 }
 
 if ("DRDoubleSDK" in window) {
