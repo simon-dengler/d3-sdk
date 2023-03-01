@@ -30,14 +30,24 @@
 			</tr>
 			<tr class="tr">
 				<td>
-					<h2 id="micValue"></h2>
+					<h2 id="micValue">
+
+                        <img id="mic_off" src="../img/mic_off.png"  width="60" >
+                        <img id="mic_on" src="../img/mic_on.png" style="display: none" width="60" >
+                    </h2>
 				</td>
 				<td>
-					<h2 id="camValue"></h2>
+					<h2 id="camValue">
+                        <img id="cam_on" src="../img/cam_on.png" width="60" >
+                        <img id="cam_off" src="../img/cam_off.png" style="display: none"  width="60" >
+
+                    </h2>
 				</td>
 				<td>
 					<h2 id="speakerValue"></h2>
-				</td>
+					   <img id="Speaker-Mute" src="../img/mute.png"   width="60" >
+					   <img id="Speaker" src="../img/sound.png"  style="display: none"  width="60" >
+                </td>
 			</tr>
 			<tr class="tr">
 				<td>
@@ -47,9 +57,13 @@
 				<td>
 					<div class="popup" onclick="myFunction()">
 						<input type="button" class="Button" id="refuseCam" value="Deaktivieren">
+                        
+
 						<span class="popuptext" id="myPopup">Sind Sie sich sicher? Die Verbindung wird getrennt!
-						    <input type="button" class="Button" id="popupbutton"  value="Abbrechen">
-							 <input type="button" id="popupbutton" value="Ja, deaktivieren" onclick="confirm()">
+						<input type="button" class="Button" id="popupbutton"  value="Abbrechen">
+					    <input type="button" id="popupbutton" value="Ja, deaktivieren" onclick="confirm()">
+                    </div>
+                        <input type="button"  class="Button" id="cam-aktive" value="Aktivieren" style="display: none;" onclick="allowcam();">
 				</td>
 				<td>
 					<input type="button" class="Button" id="allowSpeaker" value="Aktivieren" onclick="allowSpeaker()">

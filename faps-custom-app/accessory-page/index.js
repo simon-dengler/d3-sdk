@@ -2,8 +2,14 @@ function q(q) { return document.querySelector(q); }
 
 let consent = false;
 function myFunction() {
+
+    document.getElementById('mic_on').style.display = 'none';
+    document.getElementById('mic_off').style.display = 'inline';
+
+    
     var popup = document.getElementById("myPopup");
     popup.classList.toggle("show");}
+
     
 function initScreen() {
     //q("#refuseMic").hidden = true;
@@ -13,9 +19,24 @@ function initScreen() {
     allowSpeaker();
 }
 
+function allowcam() {
+    consent = true;
+    document.getElementById('cam-aktive').style.display = 'none';
+    document.getElementById('cam_off').style.display = 'none';
+    document.getElementById('cam_on').style.display = 'inline';
+
+    document.getElementById('refuseCam').style.display = 'inline';
+    DRDoubleSDK.sendCommand("cam.setBoost", { percent: 0.25 });
+    DRDoubleSDK.sendCommand("cam.requestStatus");
+ 
+}
+
 function allowMic() {
     consent = true;
     document.getElementById('allowMic').style.display = 'none';
+    document.getElementById('mic_off').style.display = 'none';
+    document.getElementById('mic_on').style.display = 'inline';
+
     document.getElementById('refuseMic').style.display = 'inline';
     DRDoubleSDK.sendCommand("mics.setBoost", { percent: 0.25 });
     DRDoubleSDK.sendCommand("mics.requestStatus");
@@ -23,8 +44,11 @@ function allowMic() {
 
 function refuseMic() {
     consent = false;
-   document.getElementById('refuseMic').style.display = 'none';
-   document.getElementById('allowMic').style.display = 'inline';
+    document.getElementById('mic_on').style.display = 'none';
+    document.getElementById('mic_off').style.display = 'inline';
+
+    document.getElementById('refuseMic').style.display = 'none';
+    document.getElementById('allowMic').style.display = 'inline';
     
    //q("#refuseMic").hidden = true;
    //q("#allowMic").hidden = false;
@@ -33,6 +57,9 @@ function refuseMic() {
 }
 
 function refuseCam() {
+    document.getElementById('cam_off').style.display = 'none';
+    document.getElementById('cam_on').style.display = 'inline';
+    
     q("#refuseCam").hidden = true;
     q("#warning").hidden = false;
     window.setTimeout(showConfirm, 1500);
@@ -43,6 +70,12 @@ function showConfirm() {
 }
 
 function confirm() {
+    document.getElementById('cam_on').style.display = 'none';
+    document.getElementById('cam_off').style.display = 'inline';
+
+    document.getElementById('refuseCam').style.display = 'none';
+    document.getElementById('cam-aktive').style.display = 'inline';
+
     DRDoubleSDK.sendCommand("camera.disable");
     DRDoubleSDK.sendCommand("endpoint.session.end");
     q("#refuseCam").hidden = false;
@@ -52,6 +85,10 @@ function confirm() {
 
 function muteSpeaker() {
     consent = false;
+
+    document.getElementById('Speaker').style.display = 'none';
+    document.getElementById('Speaker-Mute').style.display = 'inline';
+
     document.getElementById('muteSpeaker').style.display = 'none';
     document.getElementById('allowSpeaker').style.display = 'inline';
     DRDoubleSDK.sendCommand("speaker.disable");
@@ -65,7 +102,12 @@ function allowSpeaker() {
 
     consent = true;
     document.getElementById('allowSpeaker').style.display = 'none';
+    document.getElementById('Speaker-Mute').style.display = 'none';
+    document.getElementById('Speaker').style.display = 'inline';
+
+   document.getElementById('allowSpeaker').style.display = 'none';
     document.getElementById('muteSpeaker').style.display = 'inline';
+    
 
     DRDoubleSDK.sendCommand("speaker.enable");
    // q("#allowSpeaker").hidden = true;
